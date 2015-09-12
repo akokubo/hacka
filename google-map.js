@@ -20,7 +20,7 @@ window.onload = function () {
         return marker;
     }
 
-    function attachInfoWindow(marker, content) {
+    function attachInfoWindow(marker, content,c1,c2,c3) {
         google.maps.event.addListener(marker, 'click', function () {
             new google.maps.InfoWindow({
                 content: content
@@ -32,7 +32,7 @@ window.onload = function () {
         var i;
         for (i = 0; i < spots.length; i += 1) {
             markers[i] = createMarker(spots[i], map);
-            attachInfoWindow(markers[i], spots[i].id);
+            attachInfoWindow(markers[i], spots[i].id,spots[i].title,spots[i].pos,spots[i].go);
         }
     });
 };
