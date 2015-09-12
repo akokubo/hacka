@@ -20,7 +20,7 @@ window.onload = function () {
         return marker;
     }
 
-    function attachInfoWindow(marker, content,c1,c2,c3) {
+    function attachInfoWindow(marker, content) {
         google.maps.event.addListener(marker, 'click', function () {
             new google.maps.InfoWindow({
                 content: content
@@ -29,10 +29,11 @@ window.onload = function () {
     }
 
     $.getJSON("data.json", function (spots) {
-        var i;
+        var i, content;
         for (i = 0; i < spots.length; i += 1) {
             markers[i] = createMarker(spots[i], map);
-            attachInfoWindow(markers[i], spots[i].id,spots[i].title,spots[i].pos,spots[i].go);
+            content = spots[i].id + "、" + spots[i].title + "、" + spots[i].pos + "、" + spots[i].go;
+            attachInfoWindow(markers[i], content);
         }
     });
 };
